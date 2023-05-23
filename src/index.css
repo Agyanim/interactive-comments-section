@@ -1,0 +1,26 @@
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+
+:root{
+ /* Colors */
+
+ /* Primary */
+
+ --ModerateBlue:238, 40%, 52%;
+ --SoftRed:358, 79%, 66%;
+ --LightGrayishBlue:239, 57%, 85%;
+ --PaleRed:357, 100%, 86;
+ 
+ /* Neutral */
+ 
+ --DarkBlue:212, 24%, 26%;
+ --GrayishBlue:211, 10%, 45%;
+ --LightGray:223, 19%, 93%;
+ --VeryLightGray:228, 33%, 97%;
+ --White:0, 0%, 100%;
+}
+}
