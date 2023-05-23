@@ -1,34 +1,56 @@
 // import React from "react";
 import { useState } from "react";
+import CommentInput from "../components/CommentInput";
 
 type comments = {
   body: string;
-  // comment:[]
+  comment:Array<comments>
 };
+
 
 type commentsTypeProps = {
   Comments: comments;
 };
 
 const CommentsItems = ({ Comments }: commentsTypeProps) => {
-  const [isRequired, setIsRequire] = useState(false);
+  const [isReplying, setIsRplying] = useState(false);
+  const [comments, setComments] = useState(Comments.comment);
+
+  // const [replyComments,setReplyComments]=useState(Comments.comment)
+
+  const onComment = (newComment: comments) => {
+    setComments((prev) => [newComment, ...prev]);
+  };
   return (
     <div className="flex flex-col">
       <span>{Comments.body}</span>
-      {isRequired ? (
-        <button className="w-20" onClick={() => setIsRequire(false)}>
+      {isReplying ? (
+        <button className="w-20" onClick={() => setIsRplying(false)}>
           Cancel
         </button>
       ) : (
-        <button className="w-20" onClick={() => setIsRequire(true)}>
+        <button className="w-20" onClick={() => setIsRplying(true)}>
           Reply
         </button>
       )}
 
-      {isRequired && (
+      {isReplying && (
         <div className="flex flex-col">
-        <input className="border border-gray-400 h-[5rem] w-2/4" type="text" />
-        <span><button>send</button></span>
+        <CommentInput OnComment={onComment}/>
+        {
+          
+          comments.map((comment) => {
+            return (
+              <div className="border border-gray-400 flex flex-col w-3/4">
+                <CommentsItems Comments={comment} />
+              </div>
+        
+            )
+
+             } )
+
+        }
+
         </div>
         )
       }
