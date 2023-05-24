@@ -24,7 +24,7 @@ const dummyComments: Array<comments> = [
 const Comments = () => {
   const [comments, setComments] = useState(dummyComments);
 
-  const onComment = (newComment: comments) => {
+  const onComment = (newComment: comments):void => {
     setComments((prev) => [newComment, ...prev]);
   };
 

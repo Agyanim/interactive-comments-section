@@ -10,10 +10,13 @@ type commentsInputProps = {
 };
 
 const CommentInput = ({ OnComment}: commentsInputProps) => {
+  
   const [commentBody, setCommentBody] = useState("");
 
   const updateCommentHandler = () => {
-    OnComment({ body: commentBody, comments: [] });
+    OnComment({ body: commentBody, comments: [
+      {body:commentBody, comments:[]}
+    ]});
     setCommentBody("");
   };
 
