@@ -2,33 +2,28 @@
 import { useState } from "react";
 import CommentInput from "../components/CommentInput";
 
-type comments = {
-  body?: string;
-  comment: Array<comments>;
+type Comment = {
+  body: string;
+  comments: Array<Comment>;
 };
-
-
 
 type commentsTypeProps = {
-  Comments: comments;
+  comment: Comment;
 };
 
-const CommentsItems = ({ Comments }: commentsTypeProps) => {
+const CommentsItems = ({ comment }: commentsTypeProps) => {
   const [isReplying, setIsRplying] = useState(false);
-  const [comments, setComments] = useState(Comments.comment);
+  const [comments, setComments] = useState(comment.comments);
 
-  // const [replyComments,setReplyComments]=useState(Comments.comment)
-  console.log(comments);
-  
+  console.log(comment);
 
-  const onComment = (newComment: comments):void => {
+  const onComment = (newComment: Comment): void => {
     setComments((prev) => [newComment, ...prev]);
   };
 
-
   return (
     <div className="flex flex-col">
-      <span>{Comments.body}</span>
+      <span>{comment.body}</span>
       {isReplying ? (
         <button className="w-20" onClick={() => setIsRplying(false)}>
           Cancel
@@ -39,28 +34,19 @@ const CommentsItems = ({ Comments }: commentsTypeProps) => {
         </button>
       )}
 
-      {isReplying && (
-        <div className="flex flex-col">
-        <CommentInput OnComment={onComment}/>
-        
-        {
-          
-          comments.map((comment?) => {
-            return (
-              <div className="border border-gray-400 flex flex-col w-3/4">
-                {/* {comment.body} */}
-                <CommentsItems Comments={comment} />
-              </div>
-        
-            )
+      {isReplying && <CommentInput onComment={onComment} />}
 
-             } )
-             
-            }
-
-        </div>
-        )
-      }
+      <div className="flex flex-col">
+        {comments?.map((comment, i) => (
+            <div key={i} className="border border-gray-400 flex flex-col w-3/4">
+              <CommentsItems comment={comment} />
+            </div>
+          )
+        
+        
+        
+        )  }
+      </div>
     </div>
   );
 };

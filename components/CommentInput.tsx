@@ -1,22 +1,20 @@
 // import React from "react";
 import { useState } from "react";
-type comments = {
+type Comment = {
   body: string;
-  comments: Array<comments>;
+  comments: Array<Comment>;
 };
 
-type commentsInputProps = {
-  OnComment: (newComment: comments) => void;
+type mycommentsInputProps = {
+  onComment: (newComment: Comment) => void;
 };
 
-const CommentInput = ({ OnComment}: commentsInputProps) => {
+const CommentInput = ({ onComment}: mycommentsInputProps)=> {
   
   const [commentBody, setCommentBody] = useState("");
 
-  const updateCommentHandler = () => {
-    OnComment({ body: commentBody, comments: [
-      {body:commentBody, comments:[]}
-    ]});
+  const updateCommentHandler =  () :void => {
+    onComment({ body: commentBody, comments: []});
     setCommentBody("");
   };
 
