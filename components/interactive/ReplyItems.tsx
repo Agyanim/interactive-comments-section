@@ -43,7 +43,7 @@ const ReplyItems = () => {
           Delete
         </button>
         </div>
-        <button className=" bg-ModerateBlue text-White font-bold px-3 py-1 ml- lg:ml-[90%] mt-[2rem] rounded">
+        <button className="hidden lg:flex bg-ModerateBlue text-White font-bold px-3 py-1 ml- lg:ml-[90%] mt-[2rem] rounded">
           Update
         </button>
 
