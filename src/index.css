@@ -23,4 +23,12 @@
  --VeryLightGray:228, 33%, 97%;
  --White:0, 0%, 100%;
 }
+
+
+/* styling text inputs */
+
+textarea{
+    @apply border-2 border-LightGray resize-none w-[100%] h-[5rem] lg:w-[80%] 
+}
+
 }

@@ -22,26 +22,26 @@ const dummyComments: Array<Comment> = [
   },
 ];
 const Comments = () => {
+  // state to main parents comments
   const [comments, setComments] = useState(dummyComments);
 
-  const onComment = (newComment: Comment):void => {
+  const onComment = (newComment: Comment): void => {
     setComments((prev) => [newComment, ...prev]);
   };
 
-  const renderComments = comments.map((comment,i) => {
-    return (
-      <div key={i} className="border border-gray-400 flex flex-col w-3/4">
-        <CommentsItems comment={comment} />
-      </div>
-    );
-  });
-
   return (
-    <div className="flex flex-col items-start w-[100%]">
-      <CommentInput onComment={onComment}/>
-
-      <div className="mt-10 flex flex-col gap-2 w-[100%]">{renderComments}</div>
-    </div>
+    <main className="flex flex-col items-start w-[100%]">
+      {/* input element for comments (both main and child) */}
+      <CommentInput onComment={onComment} />
+      <section className="mt-10 flex flex-col gap-2 w-[100%]">
+        {/* Displaying comments */}
+        {comments.map((comment, i) => (
+          <div key={i} className="border border-gray-400 flex flex-col w-3/4">
+            <CommentsItems comment={comment} />
+          </div>
+        ))}
+      </section>
+    </main>
   );
 };
 
