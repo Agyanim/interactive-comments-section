@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useCommentContext } from "../../src/context/commentContext";
 
 const FirstLevelInput = () => {
     const [comments,setComments]=useState("")
+    const {isReplying}=useCommentContext()
     // console.log(comments);
     
   return (
@@ -20,9 +22,20 @@ const FirstLevelInput = () => {
             value={comments}
             onChange={e=>setComments(e.target.value)}
           ></textarea>
-          <button className="absolute top-[5.8rem] left-[76%]  lg:left-[80%] lg:top-0 px-3 lg:px-10 py-2 rounded border-none bg-ModerateBlue text-White font-bold lg:ml-2">
-            SEND
-          </button>
+
+          {
+            isReplying?(
+              <button className="absolute top-[5.8rem] left-[76%]  lg:left-[80%] lg:top-0 px-3 lg:px-10 py-2 rounded border-none bg-ModerateBlue text-White font-bold lg:ml-2">
+              Reply
+            </button>
+   
+            ):(
+              <button className="absolute top-[5.8rem] left-[76%]  lg:left-[80%] lg:top-0 px-3 lg:px-10 py-2 rounded border-none bg-ModerateBlue text-White font-bold lg:ml-2">
+              SEND
+            </button>
+  
+            )
+          }
         </div>
       </div>
     </section>

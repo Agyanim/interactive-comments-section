@@ -1,5 +1,8 @@
+import { useCommentContext } from "../../src/context/commentContext";
 import GradeCounter from "../interactive/GradeCounter";
 const CommentItems = () => {
+  const { comments,setIsReplying,isReplying } = useCommentContext();
+
   return (
     <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded ">
       <div className="flex flex-col-reverse lg:flex-row m-4">
@@ -24,7 +27,10 @@ const CommentItems = () => {
             explicabo doloribus ullam magni hic eos officiis? Velit quam illum
             est.
           </p>
-          <button className="text-ModerateBlue absolute lg:top-0 right-0 flex">
+          <button className="text-ModerateBlue absolute lg:top-0 right-0 flex"
+          onClick={()=>setIsReplying(!isReplying)}
+          >
+            
             <img
               className="mt-2 pr-1"
               src="/images/icon-reply.svg"
@@ -32,6 +38,9 @@ const CommentItems = () => {
             />
             Reply
           </button>
+          {comments.map((display) => (
+            <h1>{display.name}</h1>
+          ))}
         </div>
       </div>
     </section>
