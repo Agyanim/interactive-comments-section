@@ -40,6 +40,7 @@
           "createdAt": "1 week ago",
           "score": 4,
           "replyingTo": "maxblagun",
+          
           "user": {
             "image": { 
               "png": "./images/avatars/image-ramsesmiron.png",
