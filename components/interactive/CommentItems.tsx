@@ -2,7 +2,9 @@
 import GradeCounter from "../interactive/GradeCounter";
 import data from "../../util/data/data.json";
 import { useState } from "react";
-// import FirstLevelInput from "../interactive/FirstLevelInput";
+import FirstLevelInput from "../interactive/FirstLevelInput";
+import { useCommentContext } from "../../src/context/commentContext";
+import ReplyInput from "./ReplyInput";
 type CurrentUser = {
   image: {
     png: string | undefined;
@@ -34,14 +36,17 @@ type Comment = {
 
 type CommentItemsProps = {
   comment: Comment;
-};
+  setIsReplying: React.Dispatch<React.SetStateAction<boolean>>
+  isReplying:boolean
+}
 
-const CommentItems = ({ comment }: CommentItemsProps) => {
+const CommentItems = ({ comment }: CommentItemsProps,{setIsReplying}:CommentItemsProps,) => {
   const currentUser: CurrentUser = data.currentUser;
-  const [isReplying, setIsReplying] = useState(false);
+  // const {isReplying,setIsReplying}=useCommentContext()
+  // const [isReplying, setIsReplying] = useState(false);
 
   const replyHandler = () => {
-    setIsReplying(!isReplying);
+    // setIsReplying(!isReplying);
   };
   //  console.log(comments);
 
@@ -75,12 +80,13 @@ const CommentItems = ({ comment }: CommentItemsProps) => {
             />
             Reply
           </button>
-          {/* {comments.map((display) => (
-            <h1>{display.name}</h1>
-          ))} */}
         </div>
       </div>
-      {/* {isReplying && <FirstLevelInput />} */}
+      {/* {isReplying && 
+      <div className="absolute top-[5rem]">
+         <ReplyInput />
+      </div>
+     } */}
     </section>
   );
 };

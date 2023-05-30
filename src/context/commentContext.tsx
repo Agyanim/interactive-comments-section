@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState } from "react";
 
 // Define the type for comment context
 type CommentContextType = {
-  comments: Comments;
-  setComments: React.Dispatch<React.SetStateAction<Comments>>;
+  // comments: Comments;
+  // setComments: React.Dispatch<React.SetStateAction<Comments>>;
   isReplying: boolean;
   setIsReplying: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -25,34 +25,34 @@ export function useCommentContext(): CommentContextType {
   return context;
 }
 
-type Comment = {
-  name: string;
-};
+// type Comment = {
+//   name: string;
+// };
 
-type Comments = Comment[];
+// type Comments = Comment[];
 
-const dummyData: Comments = [
-  {
-    name: "Gideon",
-  },
-  {
-    name: "Eric",
-  },
-  {
-    name: "Deborah",
-  },
-];
+// const dummyData: Comments = [
+//   {
+//     name: "Gideon",
+//   },
+//   {
+//     name: "Eric",
+//   },
+//   {
+//     name: "Deborah",
+//   },
+// ];
 
 // Create a CommentProvider component to wrap your app
 export function CommentProvider({ children }: ContextProvideProps) {
-  const [comments, setComments] = useState(dummyData);
+  // const [comments, setComments] = useState(dummyData);
   const [isReplying, setIsReplying] = useState(false);
 
   // Add any other state or functions related to comments
 
   return (
     <CommentContext.Provider
-      value={{ comments, setComments, isReplying, setIsReplying }}
+      value={{isReplying, setIsReplying }}
     >
       {children}
     </CommentContext.Provider>

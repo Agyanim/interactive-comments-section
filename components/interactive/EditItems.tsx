@@ -2,17 +2,59 @@ import { useState } from "react";
 import GradeCounter from "./GradeCounter";
 import data from "../../util/data/data.json"
 
-const EditItems = () => {
+
+type CurrentUser = {
+  image: {
+    png: string | undefined;
+    webp: string | undefined;
+  };
+  username: string;
+};
+
+type Reply = {
+  id: number;
+  content: string;
+  createdAt: string;
+  score: number;
+  replyingTo: string;
+  user: CurrentUser;
+};
+
+type Replies = Reply[];
+
+type Comment = {
+  id: number;
+  content: string;
+  createdAt: string;
+  score: number;
+  user: CurrentUser;
+  replies: Replies;
+};
+
+type Comments = Comment[];
+
+type EditItemsProps={
+  comments:Comments
+  score:number
+}
+
+
+const EditItems = ({score}:EditItemsProps ,{comments}:EditItemsProps) => {
 
   const {currentUser}=data
   const [edit, SetEdit] = useState("");
+  const comment=comments
+  console.log(comment);
+  
   return (
     <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded mt-5 ">
       <div className="flex flex-col-reverse lg:flex-row m-4 relative w-full">
         <div className="">
-          <GradeCounter />
+          <GradeCounter score={score} />
         </div>
         <div className="relative ml-5 w-full">
+
+
           <div className="flex gap-4">
             <div>
               <img
