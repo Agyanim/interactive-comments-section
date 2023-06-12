@@ -1,61 +1,33 @@
 import { useState } from "react";
 import data from "../../util/data/data.json";
 
-type CurrentUser = {
-  image: {
-    png: string | undefined;
-    webp: string | undefined;
-  };
-  username: string;
-};
-
-type Reply = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo: string;
-  user: CurrentUser;
-};
-
-type Replies = Reply[];
-
-type Comment = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  user: CurrentUser;
-  replies: Replies;
-};
 
 type FirstLevelInputProps = {
-  onComment: (newComment: Comment) => void;
+  onComment: (newComment: myComment) => void;
 };
 
 const newCurrentUser: CurrentUser = data.currentUser;
 
-const FirstLevelInput = ({onComment }: FirstLevelInputProps) => {
+const FirstLevelInput = ({ onComment }: FirstLevelInputProps) => {
   const [addComment, setAddComment] = useState("");
   const [isReplying, setIsReplying] = useState(false);
 
-  
-  const addNew: Comment = {
+  const addNew:myComment = {
     id: 25,
     content: addComment,
     createdAt: "12/45/2024",
     score: 45,
     user: newCurrentUser,
-    replies: [],
+    replies:[],
   };
-  const onCommentHandler = ():void =>  {
+  const onCommentHandler = (): void => {
     onComment(addNew);
-    setAddComment("")
+    setAddComment("");
   };
 
-const replyHandler=()=>{
-  setIsReplying(!isReplying)
-}
+  const replyHandler = () => {
+    setIsReplying(!isReplying);
+  };
 
   return (
     <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded mt-5">
@@ -79,8 +51,9 @@ const replyHandler=()=>{
           ></textarea>
 
           {isReplying ? (
-            <button className="absolute top-[5.8rem] left-[76%]  lg:left-[80%] lg:top-0 px-3 lg:px-10 py-2 rounded border-none bg-ModerateBlue text-White font-bold lg:ml-2"
-            onClick={replyHandler}
+            <button
+              className="absolute top-[5.8rem] left-[76%]  lg:left-[80%] lg:top-0 px-3 lg:px-10 py-2 rounded border-none bg-ModerateBlue text-White font-bold lg:ml-2"
+              onClick={replyHandler}
             >
               Reply
             </button>

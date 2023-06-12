@@ -3,38 +3,10 @@ import GradeCounter from "./GradeCounter";
 import data from "../../util/data/data.json"
 
 
-type CurrentUser = {
-  image: {
-    png: string | undefined;
-    webp: string | undefined;
-  };
-  username: string;
-};
-
-type Reply = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo: string;
-  user: CurrentUser;
-};
-
-type Replies = Reply[];
-
-type Comment = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  user: CurrentUser;
-  replies: Replies;
-};
-
-type Comments = Comment[];
+// type Comments = Comment[];
 
 type EditItemsProps={
-  comments:Comments
+  comments:myComment[]
   score:number
 }
 
@@ -44,7 +16,6 @@ const EditItems = ({score}:EditItemsProps ,{comments}:EditItemsProps) => {
   const {currentUser}=data
   const [edit, SetEdit] = useState("");
   const comment=comments
-  console.log(comment);
   
   return (
     <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded mt-5 ">

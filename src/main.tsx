@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { CommentProvider } from "./context/commentContext";
+import { CommentContextProvider } from "./context/commentContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <CommentProvider>
+    <CommentContextProvider>
       <App />
-    </CommentProvider>
+    </CommentContextProvider>
   </React.StrictMode>
 );

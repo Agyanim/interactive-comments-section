@@ -2,45 +2,19 @@
 import GradeCounter from "../interactive/GradeCounter";
 import data from "../../util/data/data.json";
 import { useState } from "react";
-import FirstLevelInput from "../interactive/FirstLevelInput";
 import { useCommentContext } from "../../src/context/commentContext";
 import ReplyInput from "./ReplyInput";
-type CurrentUser = {
-  image: {
-    png: string | undefined;
-    webp: string | undefined;
-  };
-  username: string;
-};
-
-type Reply = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo: string;
-  user: CurrentUser;
-};
-
-type Replies = Reply[];
-
-type Comment = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  user: CurrentUser;
-  replies: Replies;
-};
-// type Comments = Comment[];
 
 type CommentItemsProps = {
-  comment: Comment;
-  setIsReplying: React.Dispatch<React.SetStateAction<boolean>>
-  isReplying:boolean
-}
+  comment: myComment;
+  setIsReplying: React.Dispatch<React.SetStateAction<boolean>>;
+  isReplying: boolean;
+};
 
-const CommentItems = ({ comment }: CommentItemsProps,{setIsReplying}:CommentItemsProps,) => {
+const CommentItems = (
+  { comment }: CommentItemsProps,
+  { setIsReplying }: CommentItemsProps
+) => {
   const currentUser: CurrentUser = data.currentUser;
   // const {isReplying,setIsReplying}=useCommentContext()
   // const [isReplying, setIsReplying] = useState(false);
@@ -69,6 +43,8 @@ const CommentItems = ({ comment }: CommentItemsProps,{setIsReplying}:CommentItem
             <h3 className="text-GrayishBlue">{comment.createdAt}</h3>
           </div>
           <p className="w-full">{comment.content}</p>
+          <div>
+          </div>
           <button
             className="text-ModerateBlue absolute lg:top-0 right-0 flex"
             onClick={replyHandler}

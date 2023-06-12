@@ -1,46 +1,21 @@
-import react,{ useState } from "react";
+import { useState } from "react";
 import data from "../../util/data/data.json";
 
-type CurrentUser = {
-  image: {
-    png: string | undefined;
-    webp: string | undefined;
-  };
-  username: string;
-};
-
-type Reply = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo: string;
-  user: CurrentUser;
-};
-
-type Replies = Reply[];
-
-type Comment = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  user: CurrentUser;
-  replies: Replies;
-};
-
 type ReplyingInputProps = {
-  onComment: (newComment: Comment) => void;
+  onComment: (newComment: myComment) => void;
+  replies:Reply[]
 //   setIsReplying: React.Dispatch<React.SetStateAction<boolean>>
 //   isReplying:Boolean
 };
 
 const newCurrentUser: CurrentUser = data.currentUser;
 
-const ReplyInput = ({onComment }: ReplyingInputProps ) => {
+const ReplyInput = ({onComment }: ReplyingInputProps ,{replies}:ReplyingInputProps) => {
+  const[myreplies,setMyReplies]=useState(replies)
+  myreplies.map(value=>value.content)
   const [addComment, setAddComment] = useState("");
   
-  const addNew: Comment = {
+  const addNew: myComment = {
     id: 25,
     content: addComment,
     createdAt: "12/45/2024",
@@ -49,7 +24,7 @@ const ReplyInput = ({onComment }: ReplyingInputProps ) => {
     replies: [],
   };
   const onCommentHandler = ():void =>  {
-    onComment(addNew);
+    // setReplies(prev=>[addNew,...prev]);
     setAddComment("")
   };
 
