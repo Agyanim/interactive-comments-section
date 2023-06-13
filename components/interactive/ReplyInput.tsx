@@ -10,9 +10,9 @@ type ReplyingInputProps = {
 
 const newCurrentUser: CurrentUser = data.currentUser;
 
-const ReplyInput = ({onComment }: ReplyingInputProps ,{replies}:ReplyingInputProps) => {
-  const[myreplies,setMyReplies]=useState(replies)
-  myreplies.map(value=>value.content)
+const ReplyInput = () => {
+  // const[myreplies,setMyReplies]=useState(replies)
+  // myreplies.map(value=>value.content)
   const [addComment, setAddComment] = useState("");
   
   const addNew: myComment = {

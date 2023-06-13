@@ -14,7 +14,7 @@ const dummyComments: myComment[] = data.comments;
 const Home = () => {
   const context=useCommentContext()
   const {...state}=context
-  console.log(state);
+  // console.log(state);
   
 
   // const [comments, setComments] = useState(dummyComments);
@@ -29,23 +29,24 @@ const Home = () => {
 
   return (
     <main className="w-screen  bg-LightGrayishBlue">
-      {/* {comments.map((comment) => (
+      {state.comment.map((comment) => (
         <div className="mb-5">
           <CommentItems
             comment={comment}
-            setIsReplying={setIsReplying}
-            isReplying={isReplying}
+            toggleReply={state.toggleReply}
+            
           />
-          {isReplying && (
-            <ReplyInput onComment={onComment} replies={comment.replies} />
+          {state.isReplying && (
+            <ReplyInput />
           )}
         </div>
       ))}
 
-      {comments.map((comment) => (
-        <EditItems score={comment.score} comments={comments} />
+      {state.comment.map((comment) => (
+        <EditItems score={comment.score} comments={comment} />
       ))}
-      <FirstLevelInput onComment={onComment} /> */}
+      <FirstLevelInput
+/>
     </main>
   );
 };

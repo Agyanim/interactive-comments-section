@@ -4,23 +4,24 @@ import data from "../../util/data/data.json";
 import { useState } from "react";
 import { useCommentContext } from "../../src/context/commentContext";
 import ReplyInput from "./ReplyInput";
+import { actionType } from "../../src/context/commentReducer";
 
 type CommentItemsProps = {
   comment: myComment;
-  setIsReplying: React.Dispatch<React.SetStateAction<boolean>>;
-  isReplying: boolean;
+  toggleReply: () => void
 };
 
-const CommentItems = (
-  { comment }: CommentItemsProps,
-  { setIsReplying }: CommentItemsProps
+const CommentItems = ({ comment }: CommentItemsProps,{toggleReply}:CommentItemsProps
 ) => {
   const currentUser: CurrentUser = data.currentUser;
   // const {isReplying,setIsReplying}=useCommentContext()
   // const [isReplying, setIsReplying] = useState(false);
 
+  const context=useCommentContext()
+
   const replyHandler = () => {
-    // setIsReplying(!isReplying);
+    context.toggleReply()
+    // toggleReply()
   };
   //  console.log(comments);
 

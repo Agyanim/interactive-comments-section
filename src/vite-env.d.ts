@@ -33,4 +33,6 @@ interface CurrentUser {
     isReplying:Boolean;
     isEditing:Boolean;
     comment:myComment[];
+    onComment: (comment: myComment) => void
+    toggleReply: () => void
 }

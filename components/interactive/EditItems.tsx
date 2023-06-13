@@ -6,7 +6,7 @@ import data from "../../util/data/data.json"
 // type Comments = Comment[];
 
 type EditItemsProps={
-  comments:myComment[]
+  comments:myComment
   score:number
 }
 
@@ -15,7 +15,7 @@ const EditItems = ({score}:EditItemsProps ,{comments}:EditItemsProps) => {
 
   const {currentUser}=data
   const [edit, SetEdit] = useState("");
-  const comment=comments
+  // const comment=comments
   
   return (
     <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded mt-5 ">
