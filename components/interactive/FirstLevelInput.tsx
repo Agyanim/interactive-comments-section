@@ -11,7 +11,6 @@ const FirstLevelInput = (
   const [comment, setComment] = useState("");
   const context=useCommentContext()
   const {...state}=context
-  // console.log(state.isReplying);
   
 
   const addNew:myComment = {
@@ -29,11 +28,10 @@ const FirstLevelInput = (
 
   const replyHandler = () => {
     state.toggleReply()
-    // setIsReplying(!isReplying);
   };
 
   return (
-    <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded mt-5">
+    <section className="flex  bg-White w-full rounded mt-5">
       <div className="flex flex-col-reverse lg:flex-row gap-2 w-[90%] lg:w-[90%] m-auto my-5 ">
         <div className="">
           <img

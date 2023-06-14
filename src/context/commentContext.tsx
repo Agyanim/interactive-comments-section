@@ -1,4 +1,4 @@
-import React, { createContext, useContext,useReducer, useState } from "react";
+import React, { createContext, useContext,useReducer } from "react";
 import { actionType, commentReducer, initialState } from "./commentReducer";
 
 // type CreateCountextType = CommentContextType | undefined;
@@ -34,8 +34,6 @@ const toggleReply=()=>{
     payload: undefined
   })
 }
-  // // const [comments, setComments] = useState(dummyData);
-  // const [isReplying, setIsReplying] = useState(false);
 
   // Add any other state or functions related to comments
 
