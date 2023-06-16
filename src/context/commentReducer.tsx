@@ -5,6 +5,7 @@ export enum actionType {
   TOGGLE_ISREPLYING = "toggle-isreplying",
   TOGGLE_ISEDITING = "toggle-isediting",
   ON_COMMENT = "set-comment",
+  GET_REPLY_ID="get-reply-id"
 }
 export const initialState: Initiastate = {
   vote: 0,
@@ -13,6 +14,8 @@ export const initialState: Initiastate = {
   comment: data.comments,
   onComment: () => {},
   toggleReply: () => {},
+  replyId:0,
+  getReplyId: () => {},
 };
 
 export const commentReducer = (
@@ -46,6 +49,11 @@ export const commentReducer = (
         ...state,
         Comment: state.comment.push(payload),
       };
+      case actionType.GET_REPLY_ID:
+        return{
+          ...state,
+          replyId:payload
+        }
       default:
         return state
   }

@@ -17,13 +17,13 @@ const Home:React.FC = () => {
   const toggleIsReplying=()=>{
     setIsReplying(!isReplying)
   }
-  console.log(isReplying);
+  // console.log(isReplying);
   
   return (
     <main className="w-screen  bg-VeryLightGray">
       <section className="flex flex-col lg:w-[60%] m-auto">
         {state.comment.map((comment) => (
-          <div className="mb-5">
+          <div key={comment.id} className="mb-5">
             <CommentItems comment={comment} toggleIsReplying={toggleIsReplying}/>
             {isReplying && <ReplyInput />}
             <div className="flex justify-end">

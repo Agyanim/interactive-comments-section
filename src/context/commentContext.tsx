@@ -35,6 +35,11 @@ const toggleReply=()=>{
   })
 }
 
+const getReplyId=(id:string|undefined)=>{
+  dispatch(
+    {type:actionType.GET_REPLY_ID, payload:id}
+  )
+}
   // Add any other state or functions related to comments
 
   const value={
@@ -44,6 +49,8 @@ const toggleReply=()=>{
     isReplying:state.isReplying,
     onComment,
     toggleReply,
+    replyId:state.replyId,
+    getReplyId
   }
   return (
     <CommentContext.Provider

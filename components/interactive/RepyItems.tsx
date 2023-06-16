@@ -2,23 +2,34 @@
 import GradeCounter from "./GradeCounter";
 import { useCommentContext } from "../../src/context/commentContext";
 import ReplyInput from "./ReplyInput";
+import { useState,useRef } from "react";
 
 type ReplyItemsProps = {
   Reply: Reply;
-  toggleIsReplying:()=>void
+  toggleIsReplying:()=>void;
+  replyId:string|undefined
 };
 
-const ReplyItems:React.FC<ReplyItemsProps> = ({ Reply,toggleIsReplying } ) => {
+const ReplyItems:React.FC<ReplyItemsProps> = ({ Reply,toggleIsReplying,replyId } ) => {
 
+  const replyRef = useRef<HTMLInputElement>(null)
   const context=useCommentContext()
-
+  
+  // console.log(context.replyId);
+  
+const [isReplying,setIsReplying]=useState(false)
   const ReplyHandler = () => {
-    // toggleIsReplying
-    // context.toggleReply()
+    const id=replyRef.current?.id
+    console.log(replyId);
+    context.getReplyId(id)
+    // setIsReplying(!isReplying)
+    toggleIsReplying()
+    // console.log(isReplying);
+    
   };
 
   return (
-    <section className="flex bg-White w-full lg:w-[95%] m-auto rounded mt-3 mr-0">
+    <section ref={replyRef} id={Reply.id.toString()} className="flex flex-col bg-white gap-10 w-full lg:w-[95%] m-auto rounded mt-2 mr-0">
       <div className="flex flex-col-reverse lg:flex-row m-4 w-full">
         <div className="">
           <GradeCounter score={Reply.score} />
@@ -39,8 +50,8 @@ const ReplyItems:React.FC<ReplyItemsProps> = ({ Reply,toggleIsReplying } ) => {
           <div>
           </div>
           <button
-            className="text-ModerateBlue absolute lg:top-0 right-0 flex"
-            onClick={toggleIsReplying}
+            className="text-ModerateBlue absolute lg:top-0 right-10 flex"
+            onClick={ReplyHandler}
           >
             <img
               className="mt-2 pr-1"
@@ -49,15 +60,8 @@ const ReplyItems:React.FC<ReplyItemsProps> = ({ Reply,toggleIsReplying } ) => {
             />
             Reply
           </button>
-          {/* <ReplyInput/> */}
         </div>
-      </div>
-        
-      {/* {isReplying && 
-      <div className="absolute top-[5rem]">
-         <ReplyInput />
-      </div>
-     } */}
+      </div>     
     </section>
   );
 };

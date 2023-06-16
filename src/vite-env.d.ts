@@ -35,4 +35,6 @@ interface CurrentUser {
     comment:myComment[];
     onComment: (comment: myComment) => void
     toggleReply: () => void
+    getReplyId:(id:string|undefined) => void
+    replyId:number
 }

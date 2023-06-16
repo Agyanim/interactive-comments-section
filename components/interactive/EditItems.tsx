@@ -18,7 +18,7 @@ const EditItems = ({score}:EditItemsProps ,{comments}:EditItemsProps) => {
   // const comment=comments
   
   return (
-    <section className="flex  bg-White w-full lg:w-[60%] m-auto rounded mt-5 ">
+    <section className="flex  bg-White w-full lg:w-[90%] m-auto rounded mt-5 ">
       <div className="flex flex-col-reverse lg:flex-row m-4 relative w-full">
         <div className="">
           <GradeCounter score={score} />

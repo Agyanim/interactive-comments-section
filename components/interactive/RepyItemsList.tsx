@@ -1,31 +1,42 @@
 // import { useReplyContext } from "../../src/context/ReplyContext";
-import { useState } from "react";
-import ReplyInput from "./ReplyInput";
+import { useRef, useState } from "react";
+import ReplyInputChild from "./ReplyInputChild";
 import ReplyItems from "./RepyItems";
-// import { actionType } from "../../src/context/ReplyReducer";
+import { useCommentContext } from "../../src/context/commentContext";
 
 type ReplyItemsProps = {
   Reply: Reply[];
 };
 
 const ReplyItemsList: React.FC<ReplyItemsProps> = ({ Reply }) => {
+  // const context = useCommentContext();
+  const replyItemsId = useRef<HTMLUListElement>(null);
+  const replyId = replyItemsId.current?.id;
+
   const [isReplying, setIsReplying] = useState(false);
-  
+
   const toggleIsReplying = () => {
-    setIsReplying(!isReplying);
+    setIsReplying((prev) => !prev);
   };
   const renderReplies = Reply.map((reply) => {
     return (
-      <div className="">
-        <ReplyItems Reply={reply} toggleIsReplying={toggleIsReplying} />
-        <div>{isReplying && <ReplyInput/> }</div>
-      </div>
+      <ul  id={reply.id.toString()} key={reply.id}>
+        <li className="">
+          <ReplyItems
+            Reply={reply}
+            toggleIsReplying={toggleIsReplying}
+            replyId={replyId}
+          />
+        </li>
+      </ul>
     );
   });
 
   return (
-    <section className="flex flex-col border-l border-gray-400  w-full lg:w-[95%] rounded ">
+    <section ref={replyItemsId} className="flex flex-col border-l border-gray-400  w-full lg:w-[95%] rounded ">
       {renderReplies}
+
+      <div>{isReplying && <ReplyInputChild />}</div>
     </section>
   );
 };
