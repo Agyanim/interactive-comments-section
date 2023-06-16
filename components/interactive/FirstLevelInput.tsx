@@ -1,33 +1,6 @@
 import { useState } from "react";
 import data from "../../util/data/data.json";
 
-type CurrentUser = {
-  image: {
-    png: string | undefined;
-    webp: string | undefined;
-  };
-  username: string;
-};
-
-type Reply = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo: string;
-  user: CurrentUser;
-};
-
-type Replies = Reply[];
-
-type Comment = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  user: CurrentUser;
-  replies: Replies;
-};
 
 type FirstLevelInputProps = {
   onComment: (newComment: Comment) => void;
@@ -40,13 +13,13 @@ const FirstLevelInput = ({onComment }: FirstLevelInputProps) => {
   const [isReplying, setIsReplying] = useState(false);
 
   
-  const addNew: Comment = {
+  const addNew:Comment = {
     id: 25,
     content: addComment,
     createdAt: "12/45/2024",
     score: 45,
     user: newCurrentUser,
-    replies: [],
+    replies:[],
   };
   const onCommentHandler = ():void =>  {
     onComment(addNew);

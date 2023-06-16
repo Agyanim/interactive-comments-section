@@ -1,34 +1,34 @@
 import GradeCounter from "../interactive/GradeCounter";
 import data from "../../util/data/data.json";
 import { useState } from "react";
-import FirstLevelInput from "../interactive/FirstLevelInput";
-type CurrentUser = {
-  image: {
-    png: string | undefined;
-    webp: string | undefined;
-  };
-  username: string;
-};
+// import FirstLevelInput from "../interactive/FirstLevelInput";
+// type CurrentUser = {
+//   image: {
+//     png: string | undefined;
+//     webp: string | undefined;
+//   };
+//   username: string;
+// };
 
-type Reply = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo: string;
-  user: CurrentUser;
-};
+// type Reply = {
+//   id: number;
+//   content: string;
+//   createdAt: string;
+//   score: number;
+//   replyingTo: string;
+//   user: CurrentUser;
+// };
 
-type Replies = Reply[];
+// type Replies = Reply[];
 
-type Comment = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  user: CurrentUser;
-  replies: Replies;
-};
+// type Comment = {
+//   id: number;
+//   content: string;
+//   createdAt: string;
+//   score: number;
+//   user: CurrentUser;
+//   replies: Replies;
+// };
 // type Comments = Comment[];
 
 type CommentItemsProps = {
