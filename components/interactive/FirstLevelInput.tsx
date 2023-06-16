@@ -31,7 +31,7 @@ const FirstLevelInput = (
   };
 
   return (
-    <section className="flex  bg-White w-full rounded mt-5">
+    <section className="flex w-full mt-5 rounded bg-White">
       <div className="flex flex-col-reverse lg:flex-row gap-2 w-[90%] lg:w-[90%] m-auto my-5 ">
         <div className="">
           <img
@@ -40,7 +40,7 @@ const FirstLevelInput = (
             alt="avatar"
           />
         </div>
-        <div className="w-full relative">
+        <div className="relative w-full">
           <textarea
             className=""
             name="comment"

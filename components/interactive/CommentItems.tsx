@@ -24,13 +24,13 @@ const CommentItems: React.FC<CommentItemsProps> = ({
   };
 
   return (
-    <section className="flex  bg-White w-full  m-auto rounded ">
-      <div className="flex flex-col-reverse lg:flex-row m-4 w-full">
+    <section className="flex w-full m-auto rounded bg-White ">
+      <div className="flex flex-col-reverse w-full m-4 lg:flex-row">
         <div className="">
           <GradeCounter score={comment.score} />
         </div>
-        <div className="relative ml-5 w-full">
-          <div className="flex gap-4 w-full">
+        <div className="relative w-full ml-5">
+          <div className="flex w-full gap-4">
             <div>
               <img
                 className="w-[2rem]"
@@ -44,11 +44,11 @@ const CommentItems: React.FC<CommentItemsProps> = ({
           <p className="w-full">{comment.content}</p>
           <div></div>
           <button
-            className="text-ModerateBlue absolute lg:top-0 right-0 flex"
+            className="absolute right-0 flex text-ModerateBlue lg:top-0"
             onClick={toggleIsReplying}
           >
             <img
-              className="mt-2 pr-1"
+              className="pr-1 mt-2"
               src="/images/icon-reply.svg"
               alt="replay"
             />
