@@ -3,10 +3,8 @@ import CommentItems from "../../components/interactive/CommentItems";
 import ReplyItemsList from "../../components/interactive/RepyItemsList";
 import EditItems from "../../components/interactive/EditItems";
 import ReplyInput from "../../components/interactive/ReplyInput";
-import data from "../../util/data/data.json";
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { useCommentContext } from "../context/commentContext";
-// import { useCommentContext } from "../context/commentContext";
 
 
 const Home:React.FC = () => {
@@ -17,7 +15,6 @@ const Home:React.FC = () => {
   const toggleIsReplying=()=>{
     setIsReplying(!isReplying)
   }
-  // console.log(isReplying);
   
   return (
     <main className="w-screen  bg-VeryLightGray">

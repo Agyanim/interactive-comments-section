@@ -40,6 +40,13 @@ const getReplyId=(id:string|undefined)=>{
     {type:actionType.GET_REPLY_ID, payload:id}
   )
 }
+
+const increaseVote=()=>{
+  {type:actionType.INCREASE_VOTE}
+}
+const decreaseVote=()=>{
+  {type:actionType.DECREASE_VOTE}
+}
   // Add any other state or functions related to comments
 
   const value={
@@ -50,7 +57,9 @@ const getReplyId=(id:string|undefined)=>{
     onComment,
     toggleReply,
     replyId:state.replyId,
-    getReplyId
+    getReplyId,
+    increaseVote,
+    decreaseVote
   }
   return (
     <CommentContext.Provider

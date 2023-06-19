@@ -14,8 +14,11 @@ export const initialState: Initiastate = {
   comment: data.comments,
   onComment: () => {},
   toggleReply: () => {},
-  replyId:0,
+  replyId:"0",
   getReplyId: () => {},
+  increaseVote:()=>{},
+  decreaseVote:()=>{},
+
 };
 
 export const commentReducer = (

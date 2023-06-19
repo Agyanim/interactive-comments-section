@@ -1,15 +1,12 @@
-// import { useReplyContext } from "../../src/context/ReplyContext";
 import { useRef, useState } from "react";
 import ReplyInputChild from "./ReplyInputChild";
 import ReplyItems from "./RepyItems";
-import { useCommentContext } from "../../src/context/commentContext";
 
 type ReplyItemsProps = {
   Reply: Reply[];
 };
 
 const ReplyItemsList: React.FC<ReplyItemsProps> = ({ Reply }) => {
-  // const context = useCommentContext();
   const replyItemsId = useRef<HTMLUListElement>(null);
   const replyId = replyItemsId.current?.id;
 

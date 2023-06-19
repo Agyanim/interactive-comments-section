@@ -1,36 +1,36 @@
 // import { useReplyContext } from "../../src/context/ReplyContext";
 import GradeCounter from "./GradeCounter";
 import { useCommentContext } from "../../src/context/commentContext";
-import ReplyInput from "./ReplyInput";
-import { useState,useRef } from "react";
+import { useRef } from "react";
 
 type ReplyItemsProps = {
   Reply: Reply;
-  toggleIsReplying:()=>void;
-  replyId:string|undefined
+  toggleIsReplying: () => void;
+  replyId: string | undefined;
 };
 
-const ReplyItems:React.FC<ReplyItemsProps> = ({ Reply,toggleIsReplying,replyId } ) => {
+const ReplyItems: React.FC<ReplyItemsProps> = ({
+  Reply,
+  toggleIsReplying,
+  replyId,
+}) => {
+  const replyRef = useRef<HTMLInputElement>(null);
+  const context = useCommentContext();
 
-  const replyRef = useRef<HTMLInputElement>(null)
-  const context=useCommentContext()
-  
-  // console.log(context.replyId);
-  
-const [isReplying,setIsReplying]=useState(false)
   const ReplyHandler = () => {
-    const id=replyRef.current?.id
-    console.log(replyId);
-    context.getReplyId(id)
-    // setIsReplying(!isReplying)
-    toggleIsReplying()
-    // console.log(isReplying);
-    
+    const id = replyRef.current?.id;
+    console.log(id);
+    // context.getReplyId(id);
+    toggleIsReplying();
   };
 
   return (
-    <section ref={replyRef} id={Reply.id.toString()} className="flex flex-col bg-white gap-10 w-full lg:w-[95%] m-auto rounded mt-2 mr-0">
-      <div className="flex flex-col-reverse lg:flex-row m-4 w-full">
+    <section
+      ref={replyRef}
+      id={Reply.id}
+      className="flex flex-col bg-white gap-10 w-full lg:w-[95%] m-auto rounded mt-2 mr-0"
+    >
+      <div id={Reply.id} className="flex flex-col-reverse lg:flex-row m-4 w-full">
         <div className="">
           <GradeCounter score={Reply.score} />
         </div>
@@ -47,8 +47,7 @@ const [isReplying,setIsReplying]=useState(false)
             <h3 className="text-GrayishBlue">{Reply.createdAt}</h3>
           </div>
           <p className="w-full">{Reply.content}</p>
-          <div>
-          </div>
+          <div></div>
           <button
             className="text-ModerateBlue absolute lg:top-0 right-10 flex"
             onClick={ReplyHandler}
@@ -61,7 +60,7 @@ const [isReplying,setIsReplying]=useState(false)
             Reply
           </button>
         </div>
-      </div>     
+      </div>
     </section>
   );
 };

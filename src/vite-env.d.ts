@@ -10,7 +10,7 @@ interface CurrentUser {
   }
   
   interface Reply {
-    id: number;
+    id: string;
     content: string;
     createdAt: string;
     score: number;
@@ -20,7 +20,7 @@ interface CurrentUser {
   
   
    interface myComment {
-    id: number;
+    id: string;
     content: string;
     createdAt: string;
     score: number;
@@ -36,5 +36,8 @@ interface CurrentUser {
     onComment: (comment: myComment) => void
     toggleReply: () => void
     getReplyId:(id:string|undefined) => void
-    replyId:number
+    replyId:string,
+    increaseVote:()=>void,
+    decreaseVote:()=>void,
+
 }

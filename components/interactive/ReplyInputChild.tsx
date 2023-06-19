@@ -1,9 +1,8 @@
 import { useState } from "react";
 import data from "../../util/data/data.json";
+import { nanoid } from "nanoid";
 
 type ReplyingInputChildProps = {
-  // onComment: (newComment: myComment) => void;
-  // replies:Reply[]
 };
 
 const newCurrentUser: CurrentUser = data.currentUser;
@@ -12,7 +11,7 @@ const ReplyInputChild:React.FC<ReplyingInputChildProps> = () => {
   const [addComment, setAddComment] = useState("");
   
   const addNew: myComment = {
-    id: 25,
+    id: nanoid(),
     content: addComment,
     createdAt: "12/45/2024",
     score: 45,
