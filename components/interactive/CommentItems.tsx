@@ -13,6 +13,8 @@ const CommentItems: React.FC<CommentItemsProps> = ({
 
 
   const replyHandler = () => {
+    // console.log(comment.id);
+    
         toggleIsReplying();
   };
 

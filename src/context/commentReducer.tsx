@@ -50,7 +50,7 @@ export const commentReducer = (
     case actionType.ON_COMMENT:
       return {
         ...state,
-        Comment: state.comment.push(payload),
+        comment: [...state.comment,payload],
       };
       case actionType.GET_REPLY_ID:
         return{
