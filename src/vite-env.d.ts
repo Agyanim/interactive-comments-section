@@ -39,5 +39,6 @@ interface CurrentUser {
     replyId:string,
     increaseVote:()=>void,
     decreaseVote:()=>void,
+    // editComment:()=>void
 
 }

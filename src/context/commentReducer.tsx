@@ -5,7 +5,8 @@ export enum actionType {
   TOGGLE_ISREPLYING = "toggle-isreplying",
   TOGGLE_ISEDITING = "toggle-isediting",
   ON_COMMENT = "set-comment",
-  GET_REPLY_ID="get-reply-id"
+  GET_REPLY_ID="get-reply-id",
+  EDIT_COMMENT="edit-comment"
 }
 export const initialState: Initiastate = {
   vote: 0,
@@ -14,10 +15,11 @@ export const initialState: Initiastate = {
   comment: data.comments,
   onComment: () => {},
   toggleReply: () => {},
-  replyId:"0",
+  replyId:"",
   getReplyId: () => {},
   increaseVote:()=>{},
   decreaseVote:()=>{},
+  // editComment:()=>{}
 
 };
 

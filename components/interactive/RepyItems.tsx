@@ -19,7 +19,9 @@ const ReplyItems: React.FC<ReplyItemsProps> = ({
 
   const ReplyHandler = () => {
     const id = replyRef.current?.id;
-    console.log(id);
+    console.log("replay id"+id);
+    console.log("comment Id"+ context.replyId);
+    
     // context.getReplyId(id);
     toggleIsReplying();
   };

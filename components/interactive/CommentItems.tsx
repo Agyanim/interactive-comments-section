@@ -1,5 +1,7 @@
 import GradeCounter from "../interactive/GradeCounter";
 import data from "../../util/data/data.json";
+import { useEffect, useRef, useState } from "react";
+import { useCommentContext } from "../../src/context/commentContext";
 type CommentItemsProps = {
   comment: myComment;
   toggleIsReplying: () => void;
@@ -11,16 +13,33 @@ const CommentItems: React.FC<CommentItemsProps> = ({
 }) => {
   const currentUser: CurrentUser = data.currentUser;
 
-
-  const replyHandler = () => {
-    // console.log(comment.id);
+  const commentId: React.RefObject<HTMLDivElement> = useRef(null);
+  const context = useCommentContext();
+  const [myId,setMyid]=useState("")
+  // useEffect(() => {
+    //   console.log(context.replyId);
     
-        toggleIsReplying();
+    // }, [context.replyId])
+    
+    const id=commentId.current?.id
+    const replyHandler = () => {
+    toggleIsReplying();
+    // console.log(myId);
   };
+   
 
+  useEffect(() => {
+    setMyid(id?id:"")
+    context.getReplyId(myId);
+  }, [myId])
+  
   return (
     <section className="flex w-full m-auto rounded bg-White ">
-      <div id={comment.id} className="flex flex-col-reverse w-full m-4 lg:flex-row">
+      <div
+        ref={commentId}
+        id={comment.id}
+        className="flex flex-col-reverse w-full m-4 lg:flex-row"
+      >
         <div className="">
           <GradeCounter score={comment.score} />
         </div>

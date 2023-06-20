@@ -35,7 +35,7 @@ const toggleReply=()=>{
   })
 }
 
-const getReplyId=(id:string|undefined)=>{
+const getReplyId=(id?:string|undefined)=>{
   dispatch(
     {type:actionType.GET_REPLY_ID, payload:id}
   )

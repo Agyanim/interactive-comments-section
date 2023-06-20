@@ -13,8 +13,8 @@ const FirstLevelInput = () => {
   const addComment: myComment = {
     id: nanoid(),
     content: comment,
-    createdAt: "12/45/2024",
-    score: 45,
+    createdAt: new Date().toLocaleDateString(),
+    score:0,
     user: newCurrentUser,
     replies: [],
   };

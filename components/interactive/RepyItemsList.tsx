@@ -17,7 +17,7 @@ const ReplyItemsList: React.FC<ReplyItemsProps> = ({ Reply }) => {
   };
   const renderReplies = Reply.map((reply) => {
     return (
-      <ul  id={reply.id.toString()} key={reply.id}>
+      <ul  id={reply.id} key={reply.id}>
         <li className="">
           <ReplyItems
             Reply={reply}
